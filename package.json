@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "Учебный репозиторий для задания [«Clean Code»](https://github.com/rolling-scopes-school/tasks/blob/master/fullstack-engineering/tasks/clean-code/README.md) курса RS School Fullstack Engineering.",
   "main": "app.js",
+  "lint-staged": {
+    "*.js": "eslint",
+    "*.{js,html,css}": "prettier --check"
+  },
   "scripts": {
     "lint": "eslint .",
     "format": "prettier --check .",
-    "format:fix": "prettier --write ."
+    "format:fix": "prettier --write .",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
