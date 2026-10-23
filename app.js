@@ -9,8 +9,8 @@
 
 const taskInput = document.getElementById('new-task'); //Add a new task.
 const addButton = document.getElementsByTagName('button')[0]; //first button
-const incompleteTaskHolder = document.getElementById('incompleteTasks'); //ul of #incompleteTasks
-const completedTasksHolder = document.getElementById('completed-tasks'); //completed-tasks
+const incompleteTaskList = document.getElementById('incompleteTasks'); //ul of #incompleteTasks
+const completedTaskList = document.getElementById('completed-tasks'); //completed-tasks
 
 //New task list item
 const createNewTaskElement = function (taskString) {
@@ -58,8 +58,8 @@ const addTask = function () {
   if (!taskInput.value) return;
   const listItem = createNewTaskElement(taskInput.value);
 
-  //Append listItem to incompleteTaskHolder
-  incompleteTaskHolder.appendChild(listItem);
+  //Append listItem to incompleteTaskList
+  incompleteTaskList.appendChild(listItem);
   bindTaskEvents(listItem);
 
   taskInput.value = '';
@@ -99,7 +99,7 @@ const deleteTask = function () {
 
 const toggleTaskStatus = function () {
   const listItem = this.parentNode;
-  const targetList = this.checked ? completedTasksHolder : incompleteTaskHolder;
+  const targetList = this.checked ? completedTaskList : incompleteTaskList;
   targetList.appendChild(listItem);
 };
 
@@ -122,8 +122,8 @@ const bindTaskEvents = function (taskListItem) {
 };
 
 for (const taskListItem of [
-  ...incompleteTaskHolder.children,
-  ...completedTasksHolder.children,
+  ...incompleteTaskList.children,
+  ...completedTaskList.children,
 ]) {
   bindTaskEvents(taskListItem);
 }
